@@ -22,10 +22,15 @@ SCRIPT
 Vagrant.configure("2") do |config|
 
 	config.vm.provider "virtualbox" do |vb, orvb|
+		file_to_disk = './tmp/large_disk.vdi'
 		orvb.vm.synced_folder '../', '/home/vagrant/lfcs', create:true, :mount_options => ['dmode=775', 'fmode=777']
 		orvb.vm.network "private_network", ip: "192.168.86.56"
 		vb.memory = SERVER_MEMORY
 		vb.customize ["modifyvm", :id, "--memory", SERVER_MEMORY]
+		unless File.exist?(file_to_disk)
+			vb.customize ['createhd', '--filename', file_to_disk, '--size', 40 * 1024]
+		end
+		vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
 	end
 
 	config.vm.provider "hyperv" do |hv, orhv|
