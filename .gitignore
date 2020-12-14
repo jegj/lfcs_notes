@@ -108,3 +108,6 @@ dist
 sandbox
 
 *.vdi
+
+*.tar.gz
+*.tar
