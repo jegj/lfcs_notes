@@ -7,6 +7,9 @@ sudo lsblk
 # Show infor about the devices
 sudo parted -l
 
+# Add a label to the device
+e2label /dev/sdb1 data
+
 #
 # Using fdisk
 #
@@ -22,3 +25,8 @@ sudo mkfs.ext4 /dev/sdb2
 
 sudo mkdir /data
 sudo mount /dev/sdb1 /data/
+
+# Add entries to fstab
+
+LABEL=data /data      ext4 defaults 0       2
+LABEL=backup /backup  ext4 defaults 0       2
