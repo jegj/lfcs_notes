@@ -16,5 +16,8 @@ cut -d: -f 1 /etc/passwd
 # Range+Delimiter + field
 cut -d: -f 1-2 /etc/passwd
 
+# Delimiter by space
+cut -d' ' -f1 sandbox/test
+
 # complement
 echo "12345678" | cut -c 2,4,6 --complement # 13578
