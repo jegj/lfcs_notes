@@ -18,7 +18,9 @@ fdisk -l <part>
 # 1) Create partition table
 # 2) Create partitions
 
-partprobe -s
+partprobe -s # to show summary
+# or
+partprobe <part>
 
 sudo mkfs.ext4 /dev/sdb1
 sudo mkfs.ext4 /dev/sdb2
