@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo dd if=/dev/zero of=/imagefile bs=1M count=250
+sudo dd if=/dev/zero of=/imagefile bs=1M count=250 # 250 MB image file
+# sudo dd if=/dev/urandom of=/imagefile bs=1M count=250
 
 losetup -f
 sudo losetup /dev/loop<x>/ imagefile
