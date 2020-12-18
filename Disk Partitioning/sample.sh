@@ -3,9 +3,10 @@
 sudo dd if=/dev/zero of=/imagefile bs=1M count=250 # 250 MB image file
 # sudo dd if=/dev/urandom of=/imagefile bs=1M count=250
 
-losetup -f
-sudo losetup /dev/loop<x>/ imagefile
-losetup -l
+#### extra step #########
+#losetup -f
+#sudo losetup /dev/loop<x>/ imagefile
+#losetup -l
 
 sudo mkfs -t ext4 -b 1024 -v imagefile # blocksize 1024
 sudo mkfs -t ext4 -b 2048 -v imagefile # blocksize 2048
