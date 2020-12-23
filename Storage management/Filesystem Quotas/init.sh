@@ -33,7 +33,7 @@ sudo edquota -g vagrant
 quota vagrant
 
 ## 5) Setting the Grace Period for Soft Limits
-edquota -t
+sudo edquota -t
 
 ##-------------------------------------------###
 
