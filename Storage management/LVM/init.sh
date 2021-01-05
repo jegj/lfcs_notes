@@ -37,6 +37,9 @@ sudo lvresize -rl +100%FREE /dev/myvg/mylvm
 
 # Old method:
 sudo lvextend -L 350M /dev/myvg/mylvm
+
+sudo lvextend -l +100%FREE /dev/myvg/mylvm
+
 sudo resize2fs /dev/myvg/mylvm
 df -h
 
