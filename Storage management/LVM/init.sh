@@ -32,6 +32,8 @@ sudo lvdisplay
 sudo lvresize -r -L +5G /dev/myvg/mylvm
 # or
 sudo lvresize -r -L 10G /dev/myvg/mylvm
+# or fill all of the unallocated space in the volume group myvg
+sudo lvextend -l +100%FREE /dev/myvg/mylvm
 
 # Old method:
 sudo lvextend -L 350M /dev/myvg/mylvm
