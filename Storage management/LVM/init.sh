@@ -47,3 +47,11 @@ df -h
 sudo pvcreate /dev/sdc2
 sudo vgextend myvg /dev/sdc2
 sudo vgdisplay
+
+# 8) Create a snapshot
+ sudo lvcreate --size 5G --snapshot --name snap /dev/myvg/mylvm
+ sudo lvremove /dev/myvg/snap
+
+# 9) Create lvm lv raid1
+ lvcreate --type raid1 -m 1 -L 1G -n my_raid1 myvg
+ mkfs.ext4 /dev/myvg/my_raid1
