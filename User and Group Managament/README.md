@@ -9,3 +9,6 @@
 - `-m` create home directory. Useless because CREATE_HOME is yes
 - `-p` configure password. NOTE: value must be provided encrypted.Normally password is not provided during user add
 - `-s` shell to use
+
+
+lock an account = preventing password based authentication we can lock the account password:
