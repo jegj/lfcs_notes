@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Edit /etc/passwd and /etc/shaow
+sudo vipw
+sudo vipw -s
+
 # Print defaults configuration
 useradd -D
 
