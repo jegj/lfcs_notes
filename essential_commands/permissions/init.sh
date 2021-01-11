@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# symbolic and octal
+chmod uo+x,g-w a_file
+
+chmod u+rwx,g+rwx,o+rwx
+chmod 773
+
 # Add exec to owner, group and other
 chmod +x file
 
