@@ -2,7 +2,8 @@
 
 
 #1) Boot, reboot, and shut down a system safely
-shutdown -h now  #shutdown
-shutdown -r now  #reboot
-shutdown -r now 'Kernel upgrade requires reboot'
-reboot
+sudo shutdown -h +1 "Power Failure imminent" # shutdown with message
+sudo shutdown -h now  #shutdown
+sudo shutdown -r now  #reboot
+sudo shutdown -r now 'Kernel upgrade requires reboot'
+sudo reboot
