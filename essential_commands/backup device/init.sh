@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Backup to another disk
+dd if=/dev/sda of=/dev/sdb
+
 # Backup a device
 ## Device must be unmounted
 
