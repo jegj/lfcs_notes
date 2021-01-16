@@ -40,3 +40,8 @@ gzip test.tar
 ## Decompress
 gzip -d test.tar.gz
 gunzip test.tar.gz
+
+# Backup file newer than a date
+tar --create --newer '2011-12-1' -vf backup1.tar /var/tmp
+
+tar --create --after-date '2011-12-1' -vzf backup1.tar /var/tmp
