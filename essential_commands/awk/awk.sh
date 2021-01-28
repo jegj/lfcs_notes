@@ -19,7 +19,10 @@ echo "Hello Tom" | awk '{$2="Adam"; print $0}'
 # Get the line with a length more than
 awk 'length($0) > 15' sandbox/seindfield
 
-# Print conditional
+# Chjange separator
+ awk -F: '{print $1}' /etc/passwd
+
+# Print conditional $NF last field in the record
 cd /home/jegj
 ls -l | awk '{if($NF == "snap") print $0}'
 
