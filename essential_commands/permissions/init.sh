@@ -32,3 +32,5 @@ chmod g+s file
 
 # set sticky bit
 chmod +t dir
+
+chgrp sales  /data/sales
