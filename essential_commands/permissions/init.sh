@@ -33,4 +33,5 @@ chmod g+s file
 # set sticky bit
 chmod +t dir
 
+# change group owner
 chgrp sales  /data/sales
