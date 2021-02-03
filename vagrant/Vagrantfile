@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
 		vb.memory = SERVER_MEMORY
 		vb.customize ["modifyvm", :id, "--memory", SERVER_MEMORY]
 		unless File.exist?(file_to_disk)
-			vb.customize ['createhd', '--filename', file_to_disk, '--size', 40 * 1024]
+			vb.customize ['createhd', '--filename', file_to_disk, '--size', 50 * 1024]
 		end
 		unless File.exist?(file_to_disk_2)
 			vb.customize ['createhd', '--filename', file_to_disk_2, '--size', 50 * 1024]

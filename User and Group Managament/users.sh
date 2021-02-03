@@ -7,6 +7,10 @@ sudo vipw -s
 # Print defaults configuration
 useradd -D
 
+# - /etc/login.defs
+# - /etc/default/useradd
+# - /etc/skel -> skeleton all file are copied
+
 # Create user
 sudo useradd dexter
 

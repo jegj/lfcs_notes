@@ -41,3 +41,6 @@ sudo umount /secret
 sudo cryptsetup --verbose luksClose secret-disk <SECRET>
 # or
 sudo cryptsetup close /dev/sdb3
+
+# Resize encryption
+cryptsetup resize /dev/mapper/secret-disk
