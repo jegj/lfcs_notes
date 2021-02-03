@@ -22,3 +22,6 @@ sudo mount -o ro,loop /imagefile /mnt/tempdirq
 sudo umount /mnt/tempdir -l
 
 sudo mount -o loop,noexec /imagefile /mnt/tempdirq
+
+# To check who is using the filesystem
+lsof <dir>
