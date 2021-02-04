@@ -1,7 +1,13 @@
 #!/bin/bash
 
 ps aux
+ps aux --sort pmem
 
+# Show parent process pid
+ps -ef
+
+# Show forest view
+ps fax
 
 # 1) Print priority
 ps l
@@ -20,3 +26,7 @@ lsof -p <pid>
 
 # show background jobs
 jobs
+
+# Shot top for an specific user
+
+top -u vadmin
