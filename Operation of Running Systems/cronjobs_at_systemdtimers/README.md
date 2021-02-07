@@ -72,6 +72,10 @@ Cron syntax:
 
 - https://crontab.guru/
 
+## systemd-timers
+
+systemctl status *.timer
+
 ## at
 
 ```sh
