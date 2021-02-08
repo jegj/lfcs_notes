@@ -1,0 +1,54 @@
+[Unit]
+Description=pgagent unit file for database %i
+After=postgresql.service
+
+[Service]
+CPUAccounting=yes
+MemoryAccounting=yes
+TasksAccounting=yes
+Type=forking
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=pgagent_%i
+User=postgres
+Group=postgres
+EnvironmentFile=/etc/pgagent/%i.conf
+PermissionsStartOnly=true
+ExecStartPre=-/bin/mkdir -p /var/log/pgagent
+ExecStartPre=-/bin/chmod 755 /var/log/pgagent/
+ExecStartPre=-/bin/chown postgres:postgres -R /var/log/pgagent/
+ExecStart=/usr/bin/pgagent -s /var/log/pgagent/%i.log  -l 2 dbname=%i user=postgres port=${PG_AGENT_TARGET_PORT}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+###################################
+
+[Unit]
+Description=An authorization and release management server for parts master files secured in S3.
+Documentation=https://ssl.git.dealerbuilt.com/projects/DB/repos/pm-auth-server/browse
+After=network.target
+Before=
+Requires= <deep relation, both fail>
+Wants= <A weaker version of Requires>
+
+[Service]
+EnvironmentFile=/etc/pmauth/pmauth.conf
+Environment=SOCKET=/var/run/pmauth/pmauth%i.socket
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=pmauth
+Type=simple
+User=pmauth
+Group=pmauth
+RuntimeDirectory=pmauth
+RuntimeDirectoryMode=0755
+WorkingDirectory=/home/pmauth/pm-auth-server
+ExecStart=/usr/bin/node index.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

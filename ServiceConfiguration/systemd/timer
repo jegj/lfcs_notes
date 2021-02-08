@@ -1,0 +1,36 @@
+########################systemd-tmpfiles-clean.timer#########################
+[Unit]
+Description=Daily Cleanup of Temporary Directories
+Documentation=man:tmpfiles.d(5) man:systemd-tmpfiles(8)
+
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec=1d
+
+########################pgrbakcup.timer#########################
+
+[Unit]
+Description=Timer for pgrbackup mkbackup command
+
+[Timer]
+Unit=pgrbackup.service
+OnCalendar=*-*-* 00:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
+########################fstrim.timer#########################
+[Unit]
+Description=Discard unused blocks once a week
+Documentation=man:fstrim
+ConditionVirtualization=!container
+
+[Timer]
+OnCalendar=weekly
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

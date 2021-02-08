@@ -1,0 +1,11 @@
+#!/bin/bash
+
+[Unit]
+Description=OpenSSH Server Socket
+
+[Socket]
+ListenStream=22
+Accept=yes
+
+[Install]
+WantedBy=sockets.target
