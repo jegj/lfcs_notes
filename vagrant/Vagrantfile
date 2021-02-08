@@ -22,32 +22,53 @@ SCRIPT
 Vagrant.configure("2") do |config|
 
 	config.vm.provider "virtualbox" do |vb, orvb|
+		vb.memory = SERVER_MEMORY
+		vb.customize ["modifyvm", :id, "--memory", SERVER_MEMORY]
+	end
+
+	config.vm.define "lfcs_sandbox", primary: true do |testbox10|
+		testbox10.vm.synced_folder '../', '/home/vagrant/lfcs', create:true, :mount_options => ['dmode=775', 'fmode=777']
+		testbox10.vm.network "private_network", ip: "192.168.86.56"
 		file_to_disk = './tmp/large_disk.vdi'
 		file_to_disk_2 = './tmp/large_disk_2.vdi'
 		file_to_disk_3 = './tmp/large_disk_3.vdi'
-		orvb.vm.synced_folder '../', '/home/vagrant/lfcs', create:true, :mount_options => ['dmode=775', 'fmode=777']
-		orvb.vm.network "private_network", ip: "192.168.86.56"
-		vb.memory = SERVER_MEMORY
-		vb.customize ["modifyvm", :id, "--memory", SERVER_MEMORY]
-		unless File.exist?(file_to_disk)
-			vb.customize ['createhd', '--filename', file_to_disk, '--size', 50 * 1024]
+		testbox10.vm.provider :virtualbox do |v|
+			unless File.exist?(file_to_disk)
+				v.customize ['createhd', '--filename', file_to_disk, '--size', 50 * 1024]
+			end
+			unless File.exist?(file_to_disk_2)
+				v.customize ['createhd', '--filename', file_to_disk_2, '--size', 50 * 1024]
+			end
+			unless File.exist?(file_to_disk_3)
+				v.customize ['createhd', '--filename', file_to_disk_3, '--size', 50 * 1024]
+			end
+			v.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
+			v.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', file_to_disk_2]
+			v.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', file_to_disk_3]
 		end
-		unless File.exist?(file_to_disk_2)
-			vb.customize ['createhd', '--filename', file_to_disk_2, '--size', 50 * 1024]
-		end
-		unless File.exist?(file_to_disk_3)
-			vb.customize ['createhd', '--filename', file_to_disk_3, '--size', 50 * 1024]
-		end
-		vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
-		vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', file_to_disk_2]
-		vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', file_to_disk_3]
-	end
-
-	config.vm.define "lfcs_sandbox" do |testbox10|
 		testbox10.vm.box = "bento/ubuntu-18.04"
 		testbox10.vm.hostname = "testbox10.testing"
 		testbox10.vm.provision "shell", inline: $script
 		testbox10.vm.provision :shell do |s|
+			s.path = "testbox.bootstrap.sh"
+			s.env = {
+				"PGPORT" => PGPORT,
+				"PGUSER" => PGUSER,
+				"PGPASSWORD" => PGPASSWORD,
+				"PGDATABASE" => PGDATABASE,
+				"PGVERSION" => PGVERSION,
+				"NODE_VER" => NODE_VER,
+				"DB_DIR" => DB_DIR
+			}
+		end
+	end
+
+	config.vm.define "client1", autostart: false do |client1|
+		client1.vm.box = "bento/ubuntu-18.04"
+		client1.vm.network "private_network", ip: "192.168.86.57"
+		client1.vm.hostname = "client.testing"
+		client1.vm.provision "shell", inline: $script
+		client1.vm.provision :shell do |s|
 			s.path = "testbox.bootstrap.sh"
 			s.env = {
 				"PGPORT" => PGPORT,
