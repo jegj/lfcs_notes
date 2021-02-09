@@ -2,6 +2,7 @@
 sudo apt install firewalld
 
 sudo systemctl [start/stop/enable] firewalld
+systemctl disable --now firewalld
 
 firewall-cmd --list-all
 
