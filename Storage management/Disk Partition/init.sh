@@ -1,3 +1,6 @@
+# For GDT partitions
+sudo apt install gdisk
+
 # block devices and report on their attributes.
 sudo blkid /dev/sda*
 
@@ -22,8 +25,10 @@ partprobe -s # to show summary
 # or
 partprobe <part>
 
-sudo mkfs.ext4 /dev/sdb1
-sudo mkfs.ext4 /dev/sdb2
+sudo mkfs.ext4 -L test /dev/sdb1
+sudo mkfs.ext4 -L test2 /dev/sdb2
+
+tune2fs -l /dev/sdb1
 
 sudo mkdir /data
 sudo mount /dev/sdb1 /data/
