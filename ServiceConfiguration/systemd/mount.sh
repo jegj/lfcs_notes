@@ -18,7 +18,7 @@ Type=ext4
 Options=defaults
 
 [Install]
-WantedBy=local-fs.target
+WantedBy=multi-user.target
 
 # Reload daemon
 systemctl daemon-reload
@@ -27,9 +27,14 @@ systemctl daemon-reload
 systemctl enable --now backups.mount
 
 #### AutoMount unit => /etc/systemd/system/backups.automount
+[Unit]
+Description=Automount backups
 
 [Automount]
 Where=/backups
+
+[Install]
+WantedBy=multi-user.target
 
 # Reload daemon
 systemctl daemon-reload
