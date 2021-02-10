@@ -5,6 +5,8 @@ sudo apt-get install lvm2
 # 1) Create tests partitions and then run:
 sudo partprobe -s
 
+# Use type 8e00
+
 # 2) Create physical volume
 sudo pvcreate /dev/sdb5
 sudo pvcreate /dev/sdc1
@@ -54,4 +56,10 @@ sudo vgdisplay
 
 # 9) Create lvm lv raid1
  lvcreate --type raid1 -m 1 -L 1G -n my_raid1 myvg
+
+ lvcreate --type mirror -m 1 -L 500m -n mylv vg00
+
  mkfs.ext4 /dev/myvg/my_raid1
+
+# 10) Striping
+lvcreate -i 3 -I 8 -L 100m -n stripe myvg
