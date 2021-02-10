@@ -2,6 +2,8 @@
 
 ####### Basic Usage
 
+# fdisk/gdisk => Linux Raid
+
 # 1) Install dependecies
 apt install mdadm
 
