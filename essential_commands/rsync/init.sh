@@ -29,7 +29,7 @@ rsync -avz test jegj@192.168.86.56:
 rsync -avz README.md -e 'ssh -i /home/jegj/projects/lfcs_training/vagrant/.vagrant/machines/lfcs_sandbox/virtualbox/private_key' vagrant@192.168.86.56:
 
 # 5) Transfer from remote to local
-sync -azv jegj@192.168.86.56:test /tmp
+rsync -azv jegj@192.168.86.56:test /tmp
 
 # 6) Custom ssh options
 rsync -a -e "ssh -p 2322" /opt/media/ remote_user@remote_host_or_ip:/opt/media/
