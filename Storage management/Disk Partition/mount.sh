@@ -9,7 +9,7 @@
 sudo mount -o remount,noexec /mydata/
 
 # Avoid hang out on boots
-sudo mount -o default,nofail /mydata/
+sudo mount -o defaults,nofail /mydata/
 
 # Test your mount options
 sudo mount -a
