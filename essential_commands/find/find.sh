@@ -49,13 +49,13 @@ find -perm -mode:
 find -perm /mode:
 
 # exactly 14 days ago
-find ~/Documents -name "*.py" -type f -mtime 14 
+find ~/Documents -name "*.py" -type f -mtime 14
 
 # more than 14 days ago
-find ~/Documents -name "*.py" -type f -mtime +14 
+find ~/Documents -name "*.py" -type f -mtime +14
 
 # less than 14 days ago
-find ~/Documents -name "*.py" -type f -mtime -14 
+find ~/Documents -name "*.py" -type f -mtime -14
 
 # atime -- access time = last time file opened
 # mtime -- modified time = last time file contents was modified
