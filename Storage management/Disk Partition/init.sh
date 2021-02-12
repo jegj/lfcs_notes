@@ -17,6 +17,7 @@ e2label /dev/sdb1 data
 # Using fdisk
 #
 fdisk -l <part>
+gdisk -l <part>
 
 # 1) Create partition table
 # 2) Create partitions

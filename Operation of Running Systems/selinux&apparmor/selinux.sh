@@ -11,6 +11,6 @@ getenforce
 setenforce Permissive
 setenforce Enforcing
 
-
+# TODO:l Apply labels
 
 # - https://www.linode.com/docs/guides/how-to-install-selinux-on-ubuntu-18-04/
