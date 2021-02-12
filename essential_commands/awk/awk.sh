@@ -10,16 +10,13 @@ ls -l | awk '{print $NF}'
 # search
 awk '/Dolores/ {print}' sandbox/seindfield
 
-# delimiter
-awk -F: '{print $1}' /etc/passwd
-
 # replacement
 echo "Hello Tom" | awk '{$2="Adam"; print $0}'
 
 # Get the line with a length more than
 awk 'length($0) > 15' sandbox/seindfield
 
-# Change separator
+# Change separator/delimiter
  awk -F: '{print $1}' /etc/passwd
 
 # Print conditional $NF **last field** in the record
