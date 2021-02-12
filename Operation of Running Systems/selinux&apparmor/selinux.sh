@@ -11,6 +11,15 @@ getenforce
 setenforce Permissive
 setenforce Enforcing
 
-# TODO:l Apply labels
+# 3)SHow context labels
+ls -Z
 
-# - https://www.linode.com/docs/guides/how-to-install-selinux-on-ubuntu-18-04/
+# 4) Set context label to file
+semanage-fcontext -a -t httpd_sys_content_t "/web(/.*)?"
+restorecon -Rv /web
+
+# 5) Get booleans
+getselbool -a
+
+# 6) Set booleans
+setselbool -P ftpd_anon_write on
