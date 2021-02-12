@@ -6,17 +6,11 @@ sudo apt install apparmor apparmor-profiles apparmor-utils
 aa-status
 
 # Create new profile
-
 cp /usr/bin/vim /usr/local/bin/kim
 aa-genprof kim
 
 # Enforce mode on kim
 aa-enforce /usr/local/bin/kim
 
-
-
-
-
-
-
-
+# Complain mode
+aa-complain /usr/local/bin/kim
