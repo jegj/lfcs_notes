@@ -31,7 +31,7 @@ docker run -d centos:7 ping 127.0.0.1
 docker ps --all
 
 # 8) Attach container
-docker run -dit centos:7 bash
+docker run --rm -dit centos:7 bash # delete if exists
 docker attach <id>
 
 # 9) Show container logs
