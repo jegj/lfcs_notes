@@ -17,7 +17,7 @@ echo "Hello Tom" | awk '{$2="Adam"; print $0}'
 awk 'length($0) > 15' sandbox/seindfield
 
 # Change separator/delimiter
- awk -F: '{print $1}' /etc/passwd
+awk -F: '{print $1}' /etc/passwd
 
 # Print conditional $NF **last field** in the record
 cd /home/jegj
