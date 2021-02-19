@@ -1,0 +1,11 @@
+/etc/systemd/system/dev-sdb1.swap => /dev/sdb1
+
+[Unit]
+Documentation=man:fstab(5) man:systemd-fstab-generator(8)
+
+[Swap]
+What=LABEL=MYSWAP
+Options=sw
+
+[Install]
+WantedBy=multi-user.target
