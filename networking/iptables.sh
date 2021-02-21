@@ -6,15 +6,18 @@ systemctl enable --now iptables
 # Check the status of your current iptables configuration
 sudo iptables -L -v
 
-iptables -P INPUT DROP
-iptables -P OUTPUT DROP
-
-# Enable traffic http,ssh,ssl
-sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-sudo iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
-
+sudo iptables -A INPUT -i lo -j ACCEPT
 sudo iptables -A INPUT -m state --state=ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A OUTPUT -m state --state=ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+# OPTIONAL sudo iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
+iptables -P INPUT DROP
+# OPTIONAL  iptables -P OUTPUT DROP
+
+# Allow to set the rule in line 1
+iptables -I INPUT  1 -i lo -j ACCEPT
+
+# Enable traffic http,icmp
 
 sudo iptables -A INPUT -p icmp -j ACCEPT
 sudo iptables -A OUTPUT -p icmp -j ACCEPT
