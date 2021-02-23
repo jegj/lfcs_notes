@@ -14,6 +14,9 @@ ufw default allow outgoing
 # Show current status
 sudo ufw status
 
+# Destination, prot and port
+ufw allow proto tcp from 192.168.86.56/32  to any port 5433 comment 'postgres access'
+
 # Block incoming connections
 sudo ufw default deny incoming
 
