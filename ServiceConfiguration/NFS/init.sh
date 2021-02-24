@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# PORT => 2049
+
 # Install common packages
 apt install nfs-kernel-server
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# PORT => 139,445
+
 # Install samba
 apt install samba
 
