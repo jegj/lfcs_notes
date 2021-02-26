@@ -34,3 +34,6 @@ nmap localhost
 # DNS troubleshooting
 dig nu.nl
   # dns file ==> /etc/resolv.conf
+
+# /etc/netplan/01-netcfg.yaml
+sudo nano /etc/netplan/01-netcfg.yaml
