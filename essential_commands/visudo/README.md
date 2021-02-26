@@ -15,6 +15,9 @@ Read it as `User Root can Run Any Command as Any User from Any Group on Any Host
 
 `who where = (as_whom) what`
 
+ansible  ALL = ( ALL:ALL) NOPASSWD:ALL
+ansible  ALL = ( ALL:ALL) NOPASSWD:/sbin/iptables
+
 
 
 - https://medium.com/kernel-space/linux-fundamentals-a-to-z-of-a-sudoers-file-a5da99a30e7f
