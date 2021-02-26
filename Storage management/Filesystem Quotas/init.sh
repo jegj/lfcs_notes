@@ -8,6 +8,7 @@ sudo apt install -y quota
 ## 2) Add usrquota in the /etc/fstab and previous actions
 LABEL=data     /data           ext4  defaults,usrquota 0 2
 LABEL=backup   /backup         ext4  defaults,grpquota 0 2
+LABEL=database /db             ext4  defaults,quota 0 2
 sudo chown vagrant.vagrant /data
 
 ## 3) Remount partition

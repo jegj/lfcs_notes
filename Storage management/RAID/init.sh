@@ -47,9 +47,6 @@ mdadm /dev/md1 --remove /dev/myvg/r0
 lvcreate -L 5G -n r2 myvg
 mdadm /dev/md1 --add /dev/myvg/r2
 
-# 4) Add a disk as spare(reserve)
-mdadm /dev/md1 --add /dev/myvg/r0
-
 # 5) Increase raid disk instead of spare disk
 mdadm --grow --raid-devices=3 /dev/md1
 
@@ -57,7 +54,7 @@ mdadm --grow --raid-devices=3 /dev/md1
 mdadm /dev/md1 --fail /dev/myvg/r0 --remove /dev/myvg/r0
 mdadm --grow /dev/md0 --raid-devices=2
 
-umount partition 
+umount partition
 resize2fs
 
 ####### Delete RAID

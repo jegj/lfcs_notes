@@ -41,6 +41,9 @@ sudo passwd -l dexter
 # Unlock account
 sudo passwd -u dexter
 
+# Expire password
+sudo passwd -e dexter
+
 # Password Aging
 sudo chage -d 0 dexter # force user to change password next login
 chage -E "2021-01-10" dexter # Define expiration date for the account

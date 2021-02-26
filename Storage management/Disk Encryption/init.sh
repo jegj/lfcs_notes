@@ -5,7 +5,7 @@
 sudo apt install -y cryptsetup
 # 1) Create encrypted partition first
 
-sudo cryptsetup luksFormat /dev/sdb3
+sudo cryptsetup luksFormat /dev/sdb3 [key-file]
 
 # To prompt password on boot:
 sudo cryptsetup luksOpen /dev/sdb3 secret-disk
