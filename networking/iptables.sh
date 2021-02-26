@@ -7,6 +7,8 @@ systemctl enable --now iptables
 sudo iptables -L -v
 
 sudo iptables -A INPUT -i lo -j ACCEPT
+sudo iptables -A INPUT -m state --state=ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A OUTPUT -m state --state=ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A INPUT -m conntrack --ctstate=ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 # OPTIONAL sudo iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
