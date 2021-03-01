@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# PORT =>   3128
 # Install package
 apt install squid
 
@@ -7,6 +8,5 @@ apt install squid
 systemctl enable --now squid
 
 # Config file: /etc/squid/squid.conf
-# port  3128
 acl blockedsite url_regex ^http://.*.oracle.com/.*$
 acl blockedsite url_regex ^https://.*.oracle.com/.*$

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# PORT => 21
+
 # install
 apt install vsftpd
 

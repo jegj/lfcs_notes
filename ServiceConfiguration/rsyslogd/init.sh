@@ -14,4 +14,5 @@ input(type="imtcp" port="514")
 # Send logs entries to journactl
 ## /etc/rsyslog.d/listen.conf
 
-*.* @192.168.86.56
+*.* @192.168.86.56  #udp
+*.* @@192.168.86.56 #tcp
