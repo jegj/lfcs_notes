@@ -56,3 +56,5 @@ sudo iptables -D INPUT 3
 
 # persist changes
 sudo /sbin/iptables-save > /etc/sysconfig/iptables
+
+apt search iptables-persistent
