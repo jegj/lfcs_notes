@@ -14,8 +14,7 @@ timedatectl status
 # Change timezone
 timedatectl set-timezone America/Lima
 
-##  NTP
-
+## NTP
 timedatectl set-ntp OFF
 
 # SHow NTP servers with stratum
