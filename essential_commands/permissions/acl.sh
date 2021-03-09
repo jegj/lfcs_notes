@@ -11,7 +11,7 @@ setfacl -mR u:test:rwx test_folder/
 setfacl -m g:testg:w test_folder/
 
 # Default ACL entries
-# To facilitate management of ACLs, you can define a default ACL in a directory; 
+# To facilitate management of ACLs, you can define a default ACL in a directory
 # it will then be automatically inherited by an object.
 setfacl -Rm g:postgres:rwx,d:g:postgres:rwx ./GEN/finstmt
 

@@ -34,4 +34,4 @@ chmod g+s file
 chmod +t dir
 
 # change group owner
-chgrp sales  /data/sales
+chgrp sales /data/sales
