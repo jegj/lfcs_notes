@@ -47,15 +47,16 @@ mdadm /dev/md1 --remove /dev/myvg/r0
 lvcreate -L 5G -n r2 myvg
 mdadm /dev/md1 --add /dev/myvg/r2
 
-# 5) Increase raid disk instead of spare disk
+# 5) Increase raid disk instead of spare disk and resize filesystem
 mdadm --grow --raid-devices=3 /dev/md1
+resize2fs /dev/md1
 
 # 6) Decrease raid disk
 mdadm /dev/md1 --fail /dev/myvg/r0 --remove /dev/myvg/r0
 mdadm --grow /dev/md0 --raid-devices=2
 
 umount partition
-resize2fs
+resize2fs /dev/md1
 
 ####### Delete RAID
 
