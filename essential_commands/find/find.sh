@@ -4,7 +4,7 @@
 find . -maxdepth 3 -type f -size +2M
 find random5/ -maxdepth 3 -name "*random*" -type f  -exec rm -f '{}' \;
 
-#  combine two conditions.
+# Combine two conditions.
 find . \( -name name1 -o -name name2 \)
 
 # Find all files with permissions equal to 222. E.g. only file with permissions 222 will be showed
@@ -48,14 +48,20 @@ find -perm -mode:
 
 find -perm /mode:
 
-# exactly 14 days ago
+# Exactly 14 days ago
 find ~/Documents -name "*.py" -type f -mtime 14
 
-# more than 14 days ago
+# More than 14 days ago
 find ~/Documents -name "*.py" -type f -mtime +14
 
-# less than 14 days ago
+# Less than 14 days ago
 find ~/Documents -name "*.py" -type f -mtime -14
+
+# More than one minutes
+find ~/Documents -name "*.py" -type f -mmin +1
+
+# Less than one minutes
+find ~/Documents -name "*.py" -type f -mmin -1
 
 # atime -- access time = last time file opened
 # mtime -- modified time = last time file contents was modified
