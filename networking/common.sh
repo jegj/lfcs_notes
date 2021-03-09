@@ -71,7 +71,7 @@ ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 # Create config folder
 mkdir /etc/systemd/network
 
-# Create config
+# Create config /etc/systemd/network/10-static-ens33.network
 vim 10-static-ens33.network
 
 [Match]
