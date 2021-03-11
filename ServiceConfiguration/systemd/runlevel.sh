@@ -15,3 +15,9 @@ systemctl set-default multi-user.target
 
 # Switch run level
 systemctl isolate multi-user.target
+
+# Show dependecies under a runlevel
+systemctl list-dependencies graphical.target
+
+# Show under which runlevel will a process run?
+systemctl show -p WantedBy sshd.service
