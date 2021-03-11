@@ -41,7 +41,7 @@ Type=cifs
 Options=_netdev,username=anna,password=12345,uid=vagrant,gid=vagrant
 
 [Install]
-WantedBy=local-fs.target
+WantedBy=multi-user.target
 
 #### AutoMount unit => /etc/systemd/system/backups.automount
 [Unit]
