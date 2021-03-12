@@ -29,3 +29,20 @@ mkdir /web/logs
 
 # restart apache
 sudo systemctl restart apache2
+
+# Restrict access to a web page
+
+<Directory /web>
+        AllowOverride All # IMPORTANT
+        Require all granted
+</Directory>
+
+#.htaccess
+
+## Deny access from IP
+Order Deny,Allow
+Deny from 192.168.86.57
+
+## Grant access from IP
+Order Allow,Deny
+Allow from 192.168.86.57
