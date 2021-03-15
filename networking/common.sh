@@ -49,6 +49,8 @@ dig nu.nl
 # /etc/netplan/01-netcfg.yaml
 sudo nano /etc/netplan/01-netcfg.yaml
 
+# Apply
+sudo netplan apply
 
 ####### SYSTEMD ############
 
