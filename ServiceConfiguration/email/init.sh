@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Install package
+## postfix
 apt install postfix
 
 # PORT: 25
@@ -14,6 +14,10 @@ apt install postfix
 inet_interfaces = all
 inet_protocols = ipv4
 myorigin = $mydomain
+
+mydestination= $mydomain
+
+mynetworks= 168.100.189.24 #subnet
 
 systemctl restart postfix
 
