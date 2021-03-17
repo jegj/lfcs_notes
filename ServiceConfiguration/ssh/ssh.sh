@@ -42,3 +42,12 @@ sudo systemctl restart sshd
 ssh -i test.rsa jegj@192.168.86.56
 
 ssh -l jegj 192.168.86.56
+
+# 5) Match user config
+# Example of overriding settings on a per-user basis
+Match User linda
+  X11Forwarding no
+  AllowTcpForwarding no
+  PermitTTY no
+  ForceCommand cvs server
+  PasswordAuthentication yes
