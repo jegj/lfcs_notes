@@ -49,6 +49,18 @@ dig nu.nl
 # /etc/netplan/01-netcfg.yaml
 sudo nano /etc/netplan/01-netcfg.yaml
 
+network:
+  version: 2
+  ethernets:
+   enp0s3:
+    addresses: [192.168.2.112/24]
+    gateway4: 192.168.2.1
+    nameservers:
+     addresses: [8.8.8.8, 8.8.4.4]
+
+# Show dns results
+systemd-resolve --status
+
 # Apply
 sudo netplan apply
 
