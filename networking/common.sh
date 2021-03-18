@@ -75,7 +75,7 @@ apt install systemd-networkd systemd-resolved
 # Remove network manager
 systemctl disable --now NetworkManager
 
-# Enable services
+# Enable services IMPORTANTE
 systemctl enable systemd-networkd
 systemctl enable systemd-resolved
 
