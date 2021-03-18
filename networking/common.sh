@@ -64,6 +64,9 @@ systemd-resolve --status
 # Apply
 sudo netplan apply
 
+# MAN
+man netplan
+
 ####### SYSTEMD ############
 
 # Install packages
@@ -92,6 +95,10 @@ vim 10-static-ens33.network
 Name=ens33
 
 [Network]
-address=192.168.4.229/24
+Address=192.168.4.229/24
 Gateway=192.168.4.2
 DNS=127.0.0.1
+
+# MAN
+man systemd-networkd
+man systemd.network
