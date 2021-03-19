@@ -76,8 +76,8 @@ apt install systemd-networkd systemd-resolved
 systemctl disable --now NetworkManager
 
 # Enable services IMPORTANTE
-systemctl enable systemd-networkd
-systemctl enable systemd-resolved
+systemctl enable --now ystemd-networkd
+systemctl enable --now systemd-resolved
 
 # Delete
 rm /etc/resolv.conf
