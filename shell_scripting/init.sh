@@ -38,3 +38,9 @@ do
 done
 
 echo done!
+
+# Redirection
+
+# stderr to stdout
+ls -l > output.txt 2>&1
+ls -l &> output.txt
