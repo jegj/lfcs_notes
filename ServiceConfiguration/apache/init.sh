@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install apache
-apt install apache2 apache2-manual
+apt install apache2 apache2-doc
 
 # Add a new direcoty entry for content
 <Directory /web>
