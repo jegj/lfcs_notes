@@ -26,6 +26,42 @@
 # 	commandN
 # done
 
+if [[ ( $username == "admin" && $password == "secret" ) ]]; then
+echo "valid user"
+else
+echo "invalid user"
+fi
+
+if [[ ( $n -eq 15 || $n  -eq 45 ) ]]
+then
+echo "You won the game"
+else
+echo "You lost the game"
+fi
+
+if [[ ( $username == "admin" && $password == "secret" ) ]]; then
+echo "valid user"
+else
+echo "invalid user"
+fi
+
+
+#!/bin/bash
+file='book.txt'
+while read line; do
+echo $line
+done < $file
+
+
+#!/bin/bash
+filename=$1
+if [ -f "$filename" ]; then
+echo "File exists"
+else
+echo "File does not exist"
+fi
+
+
 users=$(awk -F , '{ print $1 }' ldapusers | sed 's/cn=//g')
 
 createUser(){
